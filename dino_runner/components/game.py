@@ -1,6 +1,7 @@
 import random
 import pygame
 from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS
+
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
 
@@ -80,40 +81,28 @@ class Game:
         text_rect.center = (1000, 50)
         self.screen.blit(text, text_rect)
 
+    def draw_text(self, text, x, y, font_size=22, color=(0, 0, 0)):
+        font = pygame.font.Font(FONT_STYLE, font_size)
+        text_surface = font.render(text, True, color)
+        text_rect = text_surface.get_rect()
+        text_rect.center = (x, y)
+        self.screen.blit(text_surface, text_rect)
+
     def show_menu(self):
         self.screen.fill((255, 255, 255))
         half_screen_height = SCREEN_HEIGHT // 2
         half_screen_width = SCREEN_WIDTH // 2
 
         if self.death_count == 0:
-            font = pygame.font.Font(FONT_STYLE, 22)
-            text = font.render("Press any key to start", True, (0, 0, 0))
-            text_rect = text.get_rect()
-            text_rect.center = (half_screen_width, half_screen_height)
-            self.screen.blit(text, text_rect)
+            self.draw_text("Press any key to start", half_screen_width, half_screen_height)
         else:
             self.screen.blit(ICON, (half_screen_width - 20, half_screen_height - 40))
 
-            # Reinicio
-            restart_font = pygame.font.Font(FONT_STYLE, 22)
-            restart_text = restart_font.render("Press any key to restart", True, (0, 0, 0))
-            restart_text_rect = restart_text.get_rect()
-            restart_text_rect.center = (half_screen_width, half_screen_height + 40)
-            self.screen.blit(restart_text, restart_text_rect)
+            self.draw_text("Press any key to restart", half_screen_width, half_screen_height + 40)
 
-            # Contagem de mortes.
-            death_count_font = pygame.font.Font(FONT_STYLE, 22)
-            death_count_text = death_count_font.render(f"Death Count: {self.death_count}", True, (0, 0, 0))
-            death_count_text_rect = death_count_text.get_rect()
-            death_count_text_rect.center = (half_screen_width, half_screen_height + 80)
-            self.screen.blit(death_count_text, death_count_text_rect)
+            self.draw_text(f"Death Count: {self.death_count}", half_screen_width, half_screen_height + 80)
 
-            # High Score.
-            score_font = pygame.font.Font(FONT_STYLE, 22)
-            score_text = score_font.render(f"Previous Score: {self.score}", True, (0, 0, 0))
-            score_text_rect = score_text.get_rect()
-            score_text_rect.center = (half_screen_width, half_screen_height + 120)
-            self.screen.blit(score_text, score_text_rect)
+            self.draw_text(f"Previous Score: {self.score}", half_screen_width, half_screen_height + 120)
 
         pygame.display.update()
         self.handle_events_on_menu()
