@@ -34,7 +34,6 @@ class Game:
         pygame.quit()
 
     def run(self):
-        # Game loop: events - update - draw
         self.playing = True
         self.game_speed = 20
         self.score = 0
@@ -71,7 +70,6 @@ class Game:
         self.draw_score()
         self.draw_power_up_time()
         self.power_up_manager.draw(self.screen)
-        #pygame.display.update()
         pygame.display.flip()
 
     def draw_background(self):
@@ -126,18 +124,8 @@ class Game:
                 pos_y_center=half_screen_height - 100
             )
             self.screen.blit(ICON, (half_screen_width - 40, half_screen_height - 40))
-            # TAREFA: CRIAR TELA DE RESTART
-            #  CRIAR MÉTODO PARA REMOVER REPETIÇÃO DE CÓDIGO PARA ESCREVER TEXTO
-            
-            # Escrever "Press any key to restart"
-            # Escrever o acumulado de death_count
-            # Escrever o Score atingido naquela partida
 
-            ## RESETAR:
-            ##  score
-            ##  game_speed
-
-        pygame.display.update() # .flip()
+        pygame.display.update()
         self.handle_events_on_menu()
 
     def handle_events_on_menu(self):
