@@ -105,14 +105,14 @@ class Game:
                 self.player.type = DEFAULT_TYPE
 
     def show_menu(self):
-        self.screen.fill((255, 255, 255))
+        self.screen.fill((255, 0, 0))
         half_screen_height = SCREEN_HEIGHT // 2
         half_screen_width = SCREEN_WIDTH // 2
         
         if self.death_count == 0:
-           draw_message_component("Press any key to start", self.screen)
+           draw_message_component("RUN FOR YOU LIFE MOTHERFUCKER", self.screen)
         else:
-            draw_message_component("Press any key to restart", self.screen, pos_y_center=half_screen_height + 140)
+            draw_message_component("YOU NOOB HAHAHAHAHAHAHA, LEARN HOW TO RUN AND PLAY AGAIN SUCKER", self.screen, pos_y_center=half_screen_height + 140)
             draw_message_component(
                 f"Your Score: {self.score}",
                 self.screen,

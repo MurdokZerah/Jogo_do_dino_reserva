@@ -27,7 +27,7 @@ RUNNING_HAMMER = [
 ]
 RUNNING_PRIMAL = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1Primal.png")),
-    pygame.image.loag(os.path.join(IMG_DIR, "Dino/DinoRun2Primal.png"))
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2Primal.png"))
 ]
 
 JUMPING = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJump.png"))
